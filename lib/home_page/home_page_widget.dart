@@ -62,18 +62,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            'assets/images/DummyLogo.png',
-                            width: 46,
-                            height: 44.4,
-                            fit: BoxFit.cover,
-                          ),
-                          Text(
-                            'Caunsel',
-                            style: FlutterFlowTheme.of(context).title2.override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context).lineColor,
-                                  fontSize: 28,
-                                ),
+                            'assets/images/logo-white.png',
+                            width: 190.7,
+                            height: 118.9,
+                            fit: BoxFit.contain,
                           ),
                           Text(
                             'law when you need it',
