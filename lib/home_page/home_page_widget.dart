@@ -1,10 +1,7 @@
-import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -14,37 +11,7 @@ class HomePageWidget extends StatefulWidget {
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget>
-    with TickerProviderStateMixin {
-  final animationsMap = {
-    'buttonOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      applyInitialState: true,
-      effects: [
-        ShakeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 1000.ms,
-          hz: 10,
-          offset: Offset(0, 0),
-          rotation: 0.087,
-        ),
-      ],
-    ),
-    'buttonOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0,
-          end: 1,
-        ),
-      ],
-    ),
-  };
+class _HomePageWidgetState extends State<HomePageWidget> {
   TextEditingController? emailAddressController;
   TextEditingController? passwordController;
   late bool passwordVisibility;
@@ -55,13 +22,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   void initState() {
     super.initState();
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
-
     emailAddressController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
@@ -79,14 +39,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0x544F4F4F),
+      backgroundColor: Color(0xFF292929),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 1,
-            decoration: BoxDecoration(),
+            decoration: BoxDecoration(
+              color: Color(0xFF292929),
+            ),
             child: Align(
               alignment: AlignmentDirectional(0, 1),
               child: Column(
@@ -382,7 +344,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50,
-                              color: Color(0xFF5B5A5A),
+                              color: Color(0xFF292929),
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
@@ -438,8 +400,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ],
                           ),
                           FFButtonWidget(
-                            onPressed: () async {},
-                            text: 'Proceed for video call',
+                            onPressed: () async {
+                              context.pushNamed('CallList');
+                            },
+                            text: 'Call List',
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 40,
@@ -456,13 +420,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                          )
-                              .animateOnPageLoad(
-                                  animationsMap['buttonOnPageLoadAnimation']!)
-                              .animateOnActionTrigger(
-                                animationsMap[
-                                    'buttonOnActionTriggerAnimation']!,
-                              ),
+                          ),
                         ],
                       ),
                     ),

@@ -1,5 +1,6 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,8 +27,28 @@ class _CallListWidgetState extends State<CallListWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: Color(0xFF292929),
         automaticallyImplyLeading: false,
+        leading: FFButtonWidget(
+          onPressed: () async {
+            context.pop();
+          },
+          text: '<',
+          options: FFButtonOptions(
+            width: 130,
+            height: 40,
+            color: Color(0xFF292929),
+            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
+                ),
+            borderSide: BorderSide(
+              color: Colors.transparent,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
         title: Text(
           'Call List',
           style: FlutterFlowTheme.of(context).title2.override(
