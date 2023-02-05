@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -338,7 +339,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('', mounted);
+                              context.goNamedAuth('CallList', mounted);
                             },
                             text: 'LOGIN',
                             options: FFButtonOptions(
