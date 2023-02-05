@@ -5,18 +5,17 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+class RegisterWidget extends StatefulWidget {
+  const RegisterWidget({Key? key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _RegisterWidgetState createState() => _RegisterWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _RegisterWidgetState extends State<RegisterWidget> {
   TextEditingController? emailAddressController;
   TextEditingController? passwordController;
   late bool passwordVisibility;
-  bool? checkboxValue;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -81,7 +80,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                           ),
                           Text(
-                            'Sign in to continue',
+                            'Create your account',
                             style: FlutterFlowTheme.of(context)
                                 .bodyText1
                                 .override(
@@ -248,84 +247,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 40,
-                                  decoration: BoxDecoration(),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Theme(
-                                        data: ThemeData(
-                                          checkboxTheme: CheckboxThemeData(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(0),
-                                            ),
-                                          ),
-                                          unselectedWidgetColor:
-                                              Color(0xFFF5F5F5),
-                                        ),
-                                        child: Checkbox(
-                                          value: checkboxValue ??= false,
-                                          onChanged: (newValue) async {
-                                            setState(() =>
-                                                checkboxValue = newValue!);
-                                          },
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Remember me',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .lineColor,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                FFButtonWidget(
-                                  onPressed: () {
-                                    print('ButtonForgotPassword pressed ...');
-                                  },
-                                  text: 'Forgot Password?',
-                                  options: FFButtonOptions(
-                                    width: 150,
-                                    height: 40,
-                                    color: Color(0xFFA1A1A1),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .lineColor,
-                                        ),
-                                    elevation: 0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                    ),
-                                    borderRadius: BorderRadius.circular(0),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                           FFButtonWidget(
                             onPressed: () async {
                               GoRouter.of(context).prepareAuthEvent();
@@ -341,7 +262,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                               context.goNamedAuth('CallList', mounted);
                             },
-                            text: 'LOGIN',
+                            text: 'CREATE ACCOUNT',
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50,
@@ -367,7 +288,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                'Don\'t have an account?',
+                                'Already have an account?',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               Padding(
@@ -375,9 +296,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('Register');
+                                    context.pushNamed('Login');
                                   },
-                                  text: 'Create a new account',
+                                  text: 'Login',
                                   options: FFButtonOptions(
                                     width: 190,
                                     height: 25,
@@ -399,28 +320,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                               ),
                             ],
-                          ),
-                          FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed('CallList');
-                            },
-                            text: 'Call List',
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 40,
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
                           ),
                         ],
                       ),
